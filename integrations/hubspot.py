@@ -13,6 +13,11 @@ HUBSPOT_CLIENT_ID = os.getenv("HUBSPOT_CLIENT_ID")
 HUBSPOT_CLIENT_SECRET = os.getenv("HUBSPOT_CLIENT_SECRET")
 HUBSPOT_REDIRECT_URI = os.getenv("HUBSPOT_REDIRECT_URI")
 
+# Alias for frontend to use /auth/login
+@router.get("/auth/login")
+def login_alias():
+    return RedirectResponse("/auth/hubspot")
+
 @router.get("/auth/hubspot")
 def authorize_hubspot():
     url = (
